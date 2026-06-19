@@ -264,6 +264,24 @@ bool fetchUpdate(double center_lat, double center_lon, float fetch_radius_km) {
     if (isOnGround(plane) && !config::kAdsbShowGroundAircraft) {
       continue;
     }
+    // Filter A: skip emitter categories A3 and above (airliners/heavies).
+    // Unknown category ("") is allowed through so unequipped GA isn't dropped.
+    const char* cat = plane["category"] | "";
+    if (cat[0] == 'A' && cat[1] >= '0' && cat[1] != '\0' && cat[2] == '\0') {
+      const int cat_num = cat[1] - '0';
+      if (cat_num >= config::kAdsbMaxEmitterCategory) {
+        continue;
+      }
+    }
+
+    // Filter C: skip anything cruising above Class A entry (18,000 ft).
+    // Only applies when alt_baro is a numeric value (not "ground").
+    float alt_ft = 0.0f;
+    if (readJsonFloat(plane, "alt_baro", &alt_ft)) {
+      if (alt_ft > config::kAdsbMaxAltitudeFt) {
+        continue;
+      }
+    }
 
     s_aircraft[n].lat = plane["lat"].as<float>();
     s_aircraft[n].lon = plane["lon"].as<float>();
