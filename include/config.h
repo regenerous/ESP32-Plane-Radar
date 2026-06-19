@@ -55,6 +55,14 @@ constexpr float kAdsbFetchRadiusScale = 1.0f;
 /** false = hide aircraft with alt_baro "ground"; true = show them too. */
 constexpr bool kAdsbShowGroundAircraft = false;
 
+/** Filter A: skip emitter categories A3+ (airliners, heavies).
+ *  A1 = light GA, A2 = small/turboprop, A3+ = jets/heavies.
+ *  Set to 3 to block A3 and above. Unknown/missing category is allowed through. */
+constexpr int kAdsbMaxEmitterCategory = 3;
+/** Filter C: skip aircraft above this barometric altitude (feet).
+ *  18000 = top of Class E / bottom of Class A; most airliners cruise above this. */
+constexpr int kAdsbMaxAltitudeFt = 18000;
+
 // --- UI colors (RGB565) — status screens ---
 constexpr uint16_t kColorBlack = 0x0000;
 constexpr uint16_t kColorYellow = 0xFFE0;
