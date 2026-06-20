@@ -1,3 +1,14 @@
+# To make changes to code and upload to ESP32:
+1. Clone the repo
+2. Open VS Code
+3. Open cloned repo directory in VS Code
+4. Click on `platformio.ini`
+5. Let it download all dependencies
+6. At the top right there's an arrow. Click it and click `Build`
+7. Put ESP32 in boot mode (hold button down for 3 seconds while plugging in USB C)
+8. Make sure at the bottom the correct COM port is selected
+9. Click `Upload`
+
 # Plane Radar
 
 <img width="800" height="450" alt="plane-radar" src="https://github.com/user-attachments/assets/716d0992-dab8-47ba-8f1a-2aec7f607419" />
