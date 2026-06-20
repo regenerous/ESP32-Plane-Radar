@@ -58,7 +58,7 @@ constexpr bool kAdsbShowGroundAircraft = false;
 /** Filter A: skip emitter categories A3+ (airliners, heavies).
  *  A1 = light GA, A2 = small/turboprop, A3+ = jets/heavies.
  *  Set to 3 to block A3 and above. Unknown/missing category is allowed through. */
-constexpr int kAdsbMaxEmitterCategory = 3;
+constexpr int kAdsbMaxEmitterCategory = 2;
 /** Filter C: skip aircraft above this barometric altitude (feet).
  *  18000 = top of Class E / bottom of Class A; most airliners cruise above this. */
 constexpr int kAdsbMaxAltitudeFt = 18000;
